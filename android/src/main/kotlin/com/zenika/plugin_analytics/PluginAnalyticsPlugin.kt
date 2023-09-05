@@ -11,6 +11,7 @@ class PluginAnalyticsPlugin: FlutterPlugin {
     PianoAnalyticsApi.setUp(flutterPluginBinding.binaryMessenger, PianoAnalyticsApiImpl(flutterPluginBinding.applicationContext))
   }
 
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+  override fun onDetachedFromEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    PianoAnalyticsApi.setUp(flutterPluginBinding.binaryMessenger, null)
   }
 }
