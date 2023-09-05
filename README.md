@@ -100,7 +100,7 @@ mkdir -p android/src/main/kotlin/com/zenika/plugin_piano_analytics/
 ## Générer le fichier dart
 
 ```bash 
-flutter pub run pigeon --input pigeon/analytics.dart
+dart run pigeon --input pigeon/analytics.dart
 ```
 
 On a maintenant un fichier dart généré dans le dossier lib/piano/analytics.dart qui contient l'interface de notre plugin en dart que l'on pourra utiliser dans notre application Flutter.
@@ -171,7 +171,8 @@ class PluginAnalyticsPlugin: FlutterPlugin {
         PianoAnalyticsApi.setUp(flutterPluginBinding.binaryMessenger, PianoAnalyticsApiImpl())
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        PianoAnalyticsApi.setUp(flutterPluginBinding.binaryMessenger, null)
     }
 }
 ```
